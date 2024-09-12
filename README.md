@@ -15,7 +15,6 @@ Siga os passos abaixo para configurar e executar o projeto:
    npm install
 3. **Configure o arquivo de chaves**:  
    Coloque o arquivo keys.json contendo o JSON da configuração global na raiz do projeto. Esse arquivo deve conter as chaves necessárias para a execução correta do código.
-   ```bash
 
 4. **Execute o projeto**:  
    Para rodar o mapeador, utilize o comando:
