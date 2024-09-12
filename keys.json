@@ -1,0 +1,21 @@
+{
+    "botRouterToken": "Key cHJpbXVsYXJvdXRlcjpoa2JXcFNFaWVZWVViRXlRRDVrNw==",
+    "botChatStarterToken": "Key cHJpbXVsYWNoYXRzdGFydGVyOkpCYUhYcWIzWjFidmdzWWRXeDhp",
+    "botContactInfoToken": "Key cHJpbXVsYWNvbnRhY3RpbmZvOmY4eGhzeVk3Q0ZDR1BwNkNVRjli",
+    "botExceptionsToken": "Key cHJpbXVsYWV4Y2VwdGlvbnM6RVkyRTJBaVN5dHlSdWt5NmJDTjg=",
+    "botHelpDeskToken": "Key cHJpbXVsYWhlbHBkZXNrOnR3WXJ4NGxSTTV4d05lZ1dkVG5L",
+    "botChatCloserToken": "Key cHJpbXVsYWNoYXRjbG9zZXI6WTdZOUtjSEIwSnM5MEZ4S0dodGU=",
+    "botOrcamentoToken": "Key cHJpbXVsYW9yY2FtZW50bzpadmZsRTRwMlFzcFlnVVdrV0lnag==",
+    "botDuvidasToken": "Key cHJpbXVsYWR1dmlkYXM6UjRNM2Z5NEJSbm9kUWhiZW9HRFI=",
+    "botRemediosToken": "Key cHJpbXVsYXJlbWVkaW9zY29udHJvbGFkb3M6aDVUWmZ6NFpwRE5hcHlUT05id3g=",
+    "serviceChatStarter": "colegioeverest-chatstarter",
+    "serviceContactInfo": "colegioeverest-contactinfo",
+    "serviceExceptions": "colegioeverest-exceptions",
+    "serviceHelpDesk": "colegioeverest-helpdesk",
+    "serviceChatCloser": "colegioeverest-chatcloser",
+    "serviceAdmissao": "colegioeverest-admissao",
+    "serviceTrabalheConosco": "colegioeverest-trabalheconosco",
+    "tokenInsta": "123456",
+    "tenantId": "everestdf",
+    "mainMenuId": "e3051321-829b-41e9-9a74-ede5b65d528c"
+}
