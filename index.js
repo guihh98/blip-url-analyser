@@ -57,7 +57,7 @@ async function fetchData(apiUrl, apiKey) {
                             acao: action["$title"],
                             uri: action.settings.uri
                         })
-                        if(action.settings.uri.includes("msging.net")){
+                        if(action.settings.uri.toLowerCase().includes("msging.net")){
                             erros.push({
                                 bot: key,
                                 bloco: response.resource[block].$title,
@@ -65,8 +65,13 @@ async function fetchData(apiUrl, apiKey) {
                                 uri: action.settings.uri
                             })
                         }
-                        if(action.settings.uri.includes("blipApi")){
-                            sucess.push(action.settings.uri)
+                        if(action.settings.uri.toLowerCase().includes("blipapi")){
+                          sucess.push({
+                            bot: key,
+                            bloco: response.resource[block].$title,
+                            acao: action["$title"],
+                            uri: action.settings.uri
+                        })
                         }
                     }       
                 });
@@ -80,7 +85,7 @@ async function fetchData(apiUrl, apiKey) {
                             acao: action["$title"],
                             uri: action.settings.uri
                         })
-                        if(action.settings.uri.includes("msging.net")){
+                        if(action.settings.uri.toLowerCase().includes("msging.net")){
                             erros.push({
                                 bot: key,
                                 bloco: response.resource[block].$title,
@@ -88,8 +93,13 @@ async function fetchData(apiUrl, apiKey) {
                                 uri: action.settings.uri
                             })
                         }
-                        if(action.settings.uri.includes("blipApi")){
-                            sucess.push(action.settings.uri)
+                        if(action.settings.uri.toLowerCase().includes("blipApi")){
+                          sucess.push({
+                            bot: key,
+                            bloco: response.resource[block].$title,
+                            acao: action["$title"],
+                            uri: action.settings.uri
+                        })
                         }
                     }      
                 });
