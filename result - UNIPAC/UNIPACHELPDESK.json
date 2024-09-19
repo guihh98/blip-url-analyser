@@ -1,0 +1,3827 @@
+{
+  "type": "application/json",
+  "resource": {
+    "onboarding": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "a5f855b2-7344-44ad-bf8b-75bccd63d288",
+                "type": "text/plain",
+                "content": "helpDeskEntry"
+              },
+              "editable": false,
+              "deletable": false,
+              "position": "right"
+            },
+            "$invalid": false,
+            "variable": "helpDeskEntry"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "27edf161-392d-4c32-a300-6401da4e635c",
+          "typeOfStateId": "state",
+          "$connId": "con_3",
+          "$id": "ba99c1fa-52ea-4eaa-99d8-44083bb5113f",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "exists",
+              "values": [],
+              "variable": "input.content@ator"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "welcome",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "matches",
+              "values": [
+                ".*"
+              ]
+            }
+          ],
+          "$connId": "con_8",
+          "$invalid": false,
+          "$id": "abc2cf1f-a7d2-41df-a07a-2cb8eebd7d43"
+        }
+      ],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "id": "onboarding",
+      "root": true,
+      "$position": {
+        "top": "190px",
+        "left": "1074px"
+      },
+      "$title": "Início",
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "fallback": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "95b10ba8-e351-4d16-9b10-ce14961cb1fd",
+                "type": "text/plain",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "bbd84bc1-d88c-4832-a0b9-4ec3f623f686",
+          "typeOfStateId": "state",
+          "$connId": "con_13",
+          "$id": "752dc289-e25c-4228-9bbb-098c8aed2c84",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "matches",
+              "values": [
+                ".*"
+              ]
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "4647881f-628f-42e0-b7da-fa3784ea3fd9",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável (lastStateIDInFlow)",
+          "$invalid": false,
+          "settings": {
+            "variable": "lastStateIDInFlow",
+            "value": "{{state.previous.id}}"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "c4a0a1fa-a112-47d6-8057-0385220cf504",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável (lastStateNameInFlow)",
+          "$invalid": false,
+          "settings": {
+            "variable": "lastStateNameInFlow",
+            "value": "{{state.previous.name}}"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "aef91f3a-aa76-420b-a7db-be603b7fc1b2",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável (botOrigin)",
+          "$invalid": false,
+          "settings": {
+            "variable": "botOrigin",
+            "value": "{{resource.globalConfig@serviceHelpDesk}}"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "id": "fallback",
+      "$position": {
+        "top": "438px",
+        "left": "2958px"
+      },
+      "$title": "Exceções",
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "welcome": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "cf8c9892-92a7-4a39-b169-9b8f5f7ef7a4",
+                "type": "text/plain",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false,
+            "expiration": "0:1"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "4c0d9be0-bd3d-4e72-b105-a2ac741e5149",
+          "$connId": "con_18",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "matches",
+              "values": [
+                ".+"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "$id": "4cd29034-1329-46ad-a534-d89ea8284b48"
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "type": "TrackEvent",
+          "$title": "TrackAnyAttendance",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "AtendimentosTotais",
+            "action": "AtendimentosTotais"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "6e1e96eb-f178-4f4b-b1a4-8f6a33e14d4d",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Set contact's identity to correct one",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(contact, correctIdentity){\n    contact = JSON.parse(contact);\n    contact.identity = correctIdentity;\n\n    return contact;\n}",
+            "inputVariables": [
+              "contact.serialized",
+              "input.message.fromidentity"
+            ],
+            "outputVariable": "contactJSON",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "494c215a-a8a9-41a2-9616-02a3c166b154",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Req. HTTP - contact sync router-bot help desk",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{  \n    \"id\": \"{{random.guid}}\",\n    \"method\": \"merge\",\n    \"uri\": \"/contacts\",\n    \"type\": \"application/vnd.lime.contact+json\",\n    \"resource\": {{contactJSON}}\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "9d14ebf3-5293-4815-8240-fd04521bf474",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Ajusta HelpDeskEntry",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(helpDeskEntry) {\n\thelpDeskEntry = JSON.parse(helpDeskEntry);\n\tif (helpDeskEntry.team.length > 0) {\n\t\thelpDeskEntry.originalTeam = helpDeskEntry.team[0]\n\t\treturn helpDeskEntry\n\t};\n\thelpDeskEntry.team = [\"Default\"];\n\thelpDeskEntry.originalTeam = \"Default\"\n\treturn helpDeskEntry;\n}",
+            "inputVariables": [
+              "helpDeskEntry"
+            ],
+            "outputVariable": "helpDeskEntry",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "id": "welcome",
+      "$position": {
+        "top": "342px",
+        "left": "1074px"
+      },
+      "$title": "1.0 - Sincroniza contatos",
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "$tags": [
+        {
+          "background": "#EA4D9C",
+          "label": "Debug",
+          "id": "blip-tag-13446ce7-7563-ef01-e916-0f2c48abc502",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-99b74b7b-5311-487d-b5fb-7fa1cd066aa5",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-dfa82b77-f171-4c46-9b80-74896517eaea",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-5a9ffb0c-df4c-4bda-89a5-58f0921b3911",
+          "label": "ProcessHttp",
+          "background": "#7762E3",
+          "canChangeBackground": false
+        }
+      ]
+    },
+    "3c555d39-68eb-466b-9063-6adeb01132fc": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "fd1c385b-7adc-4efb-b829-3b137d4e97c0",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "618a1a0b-a439-488c-a087-4afdddcc955b",
+          "typeOfStateId": "state",
+          "$connId": "con_23",
+          "$id": "d1e43ae4-ce30-4695-805f-14b27e2c6757",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "menu"
+              ],
+              "variable": "resource.globalConfig@foraHorarioAtendimento"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "147516a7-85e6-4321-8b1f-13dc40867c42",
+          "typeOfStateId": "state",
+          "$connId": "con_28",
+          "$id": "c16f7de8-6549-4e15-8019-d490fbd35a89",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "encerrar"
+              ],
+              "variable": "resource.globalConfig@foraHorarioAtendimento"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "e45d1b22-b81f-46d8-8094-617e7d009680",
+          "typeOfStateId": "state",
+          "$connId": "con_33",
+          "$id": "c4097dda-8167-4df3-b814-74809c5ce33e",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "9816a42a-c68a-4433-8ba0-935b446570c0",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "mensagemSemAtendimento",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(FalhaAtendimento, globalConfig) {\n\n\tvar globalConfig = JSON.parse(globalConfig);\n\tvar foraHorario = `Infelizmente estamos fora do nosso horário de atendimento.\\n\\nTrabalhamos de <b>${globalConfig.horarioFuncionamento}</b>, exceto em feriados nacionais`;\n\tvar semAtendente = \"Desculpe, não temos atendentes disponíveis no momento.\"\n\n\treturn  (FalhaAtendimento === \"foraHorario\") ? foraHorario : semAtendente;\n}\n\n\n",
+            "inputVariables": [
+              "FalhaAtendimento",
+              "resource.globalConfig"
+            ],
+            "outputVariable": "mensagemSemAtendimento",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "id": "3c555d39-68eb-466b-9063-6adeb01132fc",
+      "root": false,
+      "$title": "Exibe Mensagem de não atendimento",
+      "$position": {
+        "top": "795px",
+        "left": "1611px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "$tags": [
+        {
+          "id": "blip-tag-8fae3d8e-e76a-4b2b-9f23-90c3bdc97de9",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        }
+      ]
+    },
+    "desk:b69ef3a2-9983-48f8-9d40-16bad478a460": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": false,
+            "conditions": [
+              {
+                "source": "context",
+                "variable": "desk_forwardToDeskState_status",
+                "comparison": "equals",
+                "values": [
+                  "Success"
+                ]
+              }
+            ],
+            "$cardContent": {
+              "document": {
+                "id": "4b2054ac-e136-47b4-bf52-eb6fac6a50de",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": false,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "$isDeskOutput": true,
+          "$isDeskCustomOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "desk_forwardToDeskState_status",
+              "comparison": "equals",
+              "values": [
+                "NoAgentAvailable"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "e71dd590-e060-4019-9ebe-7ea4b99a294e",
+          "$connId": "con_38",
+          "$id": "d8643270-d0db-4de8-804d-a60dc5a7d197"
+        },
+        {
+          "$isDeskOutput": true,
+          "$isDeskCustomOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "desk_forwardToDeskState_status",
+              "comparison": "equals",
+              "values": [
+                "OutOfAttendanceHour"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "b137508e-6d5e-4fe2-a627-b650794c9468",
+          "$connId": "con_43",
+          "$id": "11e17299-eed5-478d-a7bb-62d37b8b544e"
+        },
+        {
+          "$isDeskOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "input.type",
+              "comparison": "equals",
+              "values": [
+                "application/vnd.iris.ticket+json"
+              ]
+            },
+            {
+              "source": "context",
+              "variable": "input.content@status",
+              "comparison": "equals",
+              "values": [
+                "ClosedAttendant"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "$connId": "con_48",
+          "$id": "9b307e00-0b9e-411a-bced-5ef5ce42f15e"
+        },
+        {
+          "$isDeskOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "input.type",
+              "comparison": "equals",
+              "values": [
+                "application/vnd.iris.ticket+json"
+              ]
+            },
+            {
+              "source": "context",
+              "variable": "input.content@status",
+              "comparison": "equals",
+              "values": [
+                "ClosedClient"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "$connId": "con_53",
+          "$id": "1765d26d-5a82-46d0-8698-931273cf0450"
+        },
+        {
+          "$isDeskOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "input.type",
+              "comparison": "equals",
+              "values": [
+                "application/vnd.iris.ticket+json"
+              ]
+            },
+            {
+              "source": "context",
+              "variable": "input.content@status",
+              "comparison": "equals",
+              "values": [
+                "ClosedClientInactivity"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "3d168519-6e80-4887-b652-e290db0fccf5",
+          "$connId": "con_58",
+          "$id": "8c748f4e-5cd9-447b-a275-26f5131fab9d"
+        },
+        {
+          "$isDeskOutput": true,
+          "$isDeskDefaultOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "desk_forwardToDeskState_status",
+              "comparison": "equals",
+              "values": [
+                "Error"
+              ]
+            }
+          ],
+          "stateId": "fallback",
+          "$invalid": false
+        },
+        {
+          "stateId": "fe85b79d-fcd5-47b4-9814-a347b6c9c557",
+          "typeOfStateId": "state",
+          "$connId": "con_63",
+          "$id": "b9d3714f-59a3-4d85-b6bb-7becb8813400",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "contains",
+              "values": [
+                "#finaliza",
+                "#encerra",
+                "#cancel",
+                "#sair"
+              ]
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "6fa88077-1d30-4091-9f2d-1530c25d9d62",
+          "$typeOfContent": "",
+          "type": "ForwardToDesk",
+          "conditions": [],
+          "settings": {},
+          "$invalid": false
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "desk:b69ef3a2-9983-48f8-9d40-16bad478a460",
+        "$invalid": false
+      },
+      "$tags": [],
+      "id": "desk:b69ef3a2-9983-48f8-9d40-16bad478a460",
+      "deskStateVersion": "3.0.0",
+      "root": false,
+      "$title": "4.0 - Atendimento humano",
+      "$afterStateChangedActions": [
+        {
+          "$id": "a0944b48-fed4-4e4d-83f3-fed28470ad44",
+          "$typeOfContent": "",
+          "type": "LeavingFromDesk",
+          "conditions": [],
+          "settings": {}
+        }
+      ],
+      "$position": {
+        "top": "817px",
+        "left": "810px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "4c0d9be0-bd3d-4e72-b105-a2ac741e5149": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "86667929-c0a7-473d-b066-fbed10260d73",
+                "type": "text/plain",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "ec9251ee-0fb6-46fa-9d76-3c63c4984325",
+          "$connId": "con_68",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "matches",
+              "values": [
+                ".*"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "$id": "eca6b32c-2e2e-4250-a04a-f00ff26ccba9"
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "125cfd4b-d6cc-4178-b7b2-30279f9bd5cb",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Define o primeiro elemento da lista",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(helpDeskEntry) {\n\thelpDeskEntry = JSON.parse(helpDeskEntry);\n\treturn helpDeskEntry.team[0]\n}",
+            "inputVariables": [
+              "helpDeskEntry"
+            ],
+            "outputVariable": "atendente",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "1d5b798b-3d03-4765-9690-4ddd1f06fbdf",
+          "$typeOfContent": "",
+          "type": "MergeContact",
+          "$title": "Definir contato (Pool)",
+          "$invalid": false,
+          "settings": {
+            "extras": {
+              "Pool": "{{atendente}}"
+            }
+          },
+          "conditions": []
+        },
+        {
+          "$id": "5c7c567c-a137-4190-9c58-b72ea556291d",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Sync Pool between Router and this bot",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{  \n    \"id\": \"{{random.guid}}\",\n    \"method\": \"merge\",\n    \"uri\": \"/contacts\",\n    \"type\": \"application/vnd.lime.contact+json\",\n    \"resource\": {\n        \"identity\": \"{{input.message.fromidentity}}\",\n        \"extras\": {\n            \"Pool\": \"{{isAttendantOnline}}\"\n        }\n    }\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "id": "4c0d9be0-bd3d-4e72-b105-a2ac741e5149",
+      "root": false,
+      "$title": "3.2 - Define Pool",
+      "$position": {
+        "top": "550px",
+        "left": "1074px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "$tags": [
+        {
+          "id": "blip-tag-465bd940-3b2d-4424-aba1-a4b02d26dfc1",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-ae6b7608-e4e5-45a8-b6eb-c10ddb3d0ce0",
+          "label": "MergeContact",
+          "background": "#FF1E90",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-a3a8c3d0-2fd4-47da-b509-cd40a5e5330e",
+          "label": "ProcessHttp",
+          "background": "#7762E3",
+          "canChangeBackground": false
+        }
+      ]
+    },
+    "244dc729-d82b-4737-8ce9-f72166e74335": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "223030e4-e7e7-4705-aaa6-f4a8580f3667",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "40bd0cd8-d245-4ef1-82e4-be9b125e08ab",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "40bd0cd8-d245-4ef1-82e4-be9b125e08ab",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "6f9f2af5-5dc0-44bd-a259-a8fe3fb94833",
+            "$typeOfContent": "text",
+            "type": "SendMessage",
+            "settings": {
+              "id": "c001a1a3-ba1b-4153-af80-2c2dbfdea6db",
+              "type": "text/plain",
+              "content": "A Unipac agradece seu contato.🍀 Caso necessite de mais informações estamos a disposição para atendê-lo (a).",
+              "metadata": {}
+            },
+            "$cardContent": {
+              "document": {
+                "id": "c001a1a3-ba1b-4153-af80-2c2dbfdea6db",
+                "type": "text/plain",
+                "content": "A Unipac agradece seu contato.🍀 Caso necessite de mais informações estamos a disposição para atendê-lo (a)."
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "e2b4b99e-f4a3-4d01-b405-c7033c96dafa",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "b407c0a9-aa76-4314-a88b-f2554fe6e204",
+          "$typeOfContent": "",
+          "type": "Redirect",
+          "$title": "Redireciona ao Main",
+          "$invalid": false,
+          "settings": {
+            "address": "{{resource.globalConfig@serviceMain}}",
+            "context": {
+              "type": "text/plain",
+              "value": "{\n    \"estado\": \"inicio\",\n    \"ator\": \"helpdesk\"\n}"
+            }
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-3fd43de9-251d-46ae-a565-19b2e0a7a3c4",
+          "label": "Redirect",
+          "background": "#1EA1FF",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-6675e8d7-11be-43be-9c74-8117f237e5fc",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "244dc729-d82b-4737-8ce9-f72166e74335",
+      "root": false,
+      "$title": "7.0 - Fim",
+      "$position": {
+        "top": "2081px",
+        "left": "467px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "ef89acdd-9833-4ae9-9b1a-dde34030d006": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "c76f44aa-5ec9-4bf1-a8df-e614055025da",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "d8cb4e8e-26cf-40ac-837b-b61ed0c4de78",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "d8cb4e8e-26cf-40ac-837b-b61ed0c4de78",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "c5ea7984-5e21-4a45-bac2-f2db57885c98",
+            "$typeOfContent": "text",
+            "type": "SendMessage",
+            "settings": {
+              "id": "0cbbfbdb-e27f-41f1-a8ea-c46a873c2581",
+              "type": "text/plain",
+              "content": "Atendimento finalizado!",
+              "metadata": {}
+            },
+            "$cardContent": {
+              "document": {
+                "id": "0cbbfbdb-e27f-41f1-a8ea-c46a873c2581",
+                "type": "text/plain",
+                "content": "Atendimento finalizado!"
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "8de8235d-d3a5-46ee-aa1a-4c712c5f0afd",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "99521822-0e24-4a5a-afb4-081ea06d395a",
+          "typeOfStateId": "state",
+          "$connId": "con_73",
+          "$id": "25800c93-03d8-4be0-b207-0817f9788a05",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "8690d364-df77-4407-8c50-0f26f7e181c2",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Registrar Atendimento Realizado",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "AtendimentosRealizados",
+            "action": "AtendimentosRealizados"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "d4b75dbe-f925-4db8-8458-143347331fe8",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Extrai infos do ticket finalizado",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(content){\n    content = JSON.parse(content);\n    var atendente = (content.agentIdentity) ? decodeURIComponent(content.agentIdentity.split(\"@\")[0]) : '';\n\n    // Atualiza o objeto do ticket com infos\n    content.atendente = atendente;\n    content.time = content.team;\n\n    return content;\n}\n",
+            "inputVariables": [
+              "input.content"
+            ],
+            "outputVariable": "ticket",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "0e209188-a47f-4248-9c31-c36cd55166ce",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Req. HTTP - all agents",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{\n  \"id\": \"{{$guid}}\",\n  \"to\": \"postmaster@desk.msging.net\",\n  \"method\": \"get\",\n  \"uri\": \"/attendants\"\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "2e32ea23-bef2-44c2-b095-c6cac5cf0613",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Get @atendente",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(ticket, result){\n    ticket = JSON.parse(ticket);\n    result = JSON.parse(result);\n    var tipoBusca = \"Email\"; // Opções Válidas: Email ou Nome\n    let attendantFound;\n\n    if(result.resource && (result.resource.total >= 1)){\n        attendantFound = result.resource.items.find((attendant) => (attendant.email === ticket.atendente));\n    }\n    if(attendantFound){\n        if(tipoBusca === \"Nome\"){\n            var nome = attendantFound.fullName.split(' ');\n            if(nome.lenght > 1){\n                return `${nome[0]} ${nome[1]}`;\n            }\n            return nome[0];\n        }\n        else {\n            return attendantFound.email.split('@', 1)[0];\n        }\n    }\n    return '';\n}\n",
+            "inputVariables": [
+              "ticket",
+              "result"
+            ],
+            "outputVariable": "attendantTeam",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [
+        {
+          "$id": "76c1f0c1-70a3-4275-8dd9-1400c59c5e15",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Define var (conversaTicketStr) - contém as referências inicias para a obtenção e geração de conversa",
+          "$invalid": false,
+          "settings": {
+            "variable": "conversaTicketStr",
+            "value": "{\"msgRef\": \"\", \"texto\": \"\"}"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "a3681fc7-877f-4a71-925f-d00cb2565354",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir var (convTextoCompleto)",
+          "$invalid": false,
+          "settings": {
+            "variable": "convTextoCompleto"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-09fcaabf-b559-4e09-8d9b-6fdfd7823ae3",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-40fa153a-de8f-4f9a-81f5-af8d5213d251",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-0e55b39f-d059-4c7d-a406-f573b2f39ebf",
+          "label": "ProcessHttp",
+          "background": "#7762E3",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-d64961f8-e15f-4ef3-825d-4951c86d78b8",
+          "label": "SetVariable",
+          "background": "#FF4A1E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-ef114c22-f01b-42ca-b79b-ef0d7e37f46a",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+      "root": false,
+      "$title": "5.0 - Infos do ticket finalizado",
+      "$position": {
+        "top": "1201px",
+        "left": "620px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "bbd84bc1-d88c-4832-a0b9-4ec3f623f686": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "e0b1b7f8-d616-44b5-94fd-3694635cc161",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "f9885a61-5f36-4218-aeb9-14ffff2eab02",
+          "$typeOfContent": "",
+          "type": "Redirect",
+          "$title": "Redirecionar a Exceptions",
+          "$invalid": false,
+          "settings": {
+            "context": {
+              "type": "text/plain",
+              "value": "{\n    \"content\": \"{{input.content}}\",\n    \"type\": \"{{input.type}}\"\n}"
+            },
+            "address": "{{resource.globalConfig@serviceExceptions}}"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "background": "#2cc3d5",
+          "label": "RedirectTo",
+          "id": "blip-tag-8cdf16cc-9155-df12-51ac-105a193ffda6",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-45c153a7-f188-489d-9a14-7c1c8e6a0fa6",
+          "label": "Redirect",
+          "background": "#1EA1FF",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "bbd84bc1-d88c-4832-a0b9-4ec3f623f686",
+      "root": false,
+      "$title": "E.1.0 - To Sub bot Exceptions",
+      "$position": {
+        "top": "415.429px",
+        "left": "3181.43px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "fe85b79d-fcd5-47b4-9814-a347b6c9c557": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "e894b3ea-3fe9-4a74-bc34-7923143f7ab4",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "typeOfStateId": "state",
+          "$connId": "con_78",
+          "$id": "8b8717cc-4609-4cb4-b032-b60c127fa769",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "true"
+              ],
+              "variable": "isClosed"
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "a2274485-6805-46e7-82b6-db708807c795",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Fetch all user's tickets",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/tickets?$filter=(customerIdentity%20eq%20'{{input.message.fromidentity}}')\"\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "59e799cb-911b-42e6-bd00-1d2fd0c0a5c2",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Extract the last open ticket",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(statusCode, result){\n    if(statusCode != 200){\n        return '';\n    }\n\n    result = JSON.parse(result);\n    var tickets = (result.resource) ? result.resource.items : [];\n    var openTickets = tickets.filter((t) => !t.closed);\n    if(openTickets.length){\n        return openTickets[0];\n    }\n\n    return '';\n}",
+            "inputVariables": [
+              "statusCode",
+              "result"
+            ],
+            "outputVariable": "lastOpenTicket",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "a7883a27-dc0a-4e24-923f-8ab4bfa898b9",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Close the user's last open ticket (completely if 'waiting' or partially if 'open')",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"set\",\n    \"uri\": \"/tickets/change-status\",\n    \"type\": \"application/vnd.iris.ticket+json\",\n    \"resource\": {\n        \"id\": \"{{lastOpenTicket@id}}\",\n        \"status\": \"ClosedClient\"\n    }\n}\n",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "lastOpenTicket",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        },
+        {
+          "$id": "ec52d020-3b04-4450-9f56-6c1f8179853e",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Get the updated ticket",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{\n    \"id\": \"{{$guid}}\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"/ticket/{{lastOpenTicket@id}}\"\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "lastOpenTicket",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        },
+        {
+          "$id": "68624077-ee06-48ec-9885-310eceb68d05",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Is it completely closed?",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(statusCode, result, lastOpenTicket){\n    if((lastOpenTicket == '') || (statusCode != 200)){\n        return false;\n    }\n\n    result = JSON.parse(result);\n    if(result.resource){\n        return result.resource.status.includes('Closed');\n    }\n\n    return false;\n}",
+            "inputVariables": [
+              "statusCode",
+              "result",
+              "lastOpenTicket"
+            ],
+            "outputVariable": "isClosed",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-1e311c10-e15d-4a61-aca6-c435c57fb007",
+          "label": "ProcessHttp",
+          "background": "#7762E3",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-4b451e44-e8e3-42e3-bade-50b0d593c06d",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-ced766e6-49ec-4a74-b44c-9da0a7c91aa3",
+          "label": "UserInput",
+          "background": "#000000",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "fe85b79d-fcd5-47b4-9814-a347b6c9c557",
+      "root": false,
+      "$title": "4.1 - Busca e encerra o ticket aberto",
+      "$position": {
+        "top": "1190px",
+        "left": "941px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "27edf161-392d-4c32-a300-6401da4e635c": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "a6429245-1da2-43f1-8f97-958e4ab89f73",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "typeOfStateId": "variable",
+          "$id": "c064029a-7d9c-4394-8732-4e5d64f22d4e",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "anterior"
+              ],
+              "variable": "input.content@estado"
+            }
+          ],
+          "$invalid": false,
+          "stateId": "{{lastStateIDInFlow}}"
+        },
+        {
+          "typeOfStateId": "variable",
+          "$id": "989ca0fa-9ca5-48da-9c39-64f9266ebf46",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "inicio"
+              ],
+              "variable": "input.content@estado"
+            }
+          ],
+          "$invalid": false,
+          "stateId": "{{state.previous.id}}"
+        }
+      ],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false,
+        "typeOfStateId": "state"
+      },
+      "$tags": [
+        {
+          "background": "#1EA1FF",
+          "label": "DirectTo",
+          "id": "blip-tag-6cc0c368-d659-8020-cb20-56179cc83b97",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "27edf161-392d-4c32-a300-6401da4e635c",
+      "root": false,
+      "$title": "Callback Exceptions",
+      "$position": {
+        "top": "167px",
+        "left": "1325px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "invalidOutputs": true
+    },
+    "d5d89389-6d0b-47ca-ba01-cf2fa3467c9e": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "ed97d632-d0a4-403b-ab96-dc75da83e4cd",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "4c0d9be0-bd3d-4e72-b105-a2ac741e5149",
+          "typeOfStateId": "state",
+          "$connId": "con_83",
+          "$id": "ecf2dcf7-e25c-40f7-aab6-30f335bb96ac",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "notEquals",
+              "values": [
+                "[]"
+              ],
+              "variable": "helpDeskEntry@team"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "3c555d39-68eb-466b-9063-6adeb01132fc",
+          "typeOfStateId": "state",
+          "$connId": "con_88",
+          "$id": "c24642f6-1202-44b7-b1a9-c07f21380e5a",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "3f395605-d129-46d4-870a-e9b54eaa67e3",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Remove o primeiro elemento do helpdeskentry",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(helpDeskEntry) {\n    helpDeskEntry = JSON.parse(helpDeskEntry);\n    helpDeskEntry.team.shift();\n    return helpDeskEntry;\n}",
+            "inputVariables": [
+              "helpDeskEntry"
+            ],
+            "outputVariable": "helpDeskEntry",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-9fc0eace-ea73-4364-9746-5d267edb6d68",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "d5d89389-6d0b-47ca-ba01-cf2fa3467c9e",
+      "root": false,
+      "$title": "Procura outra fila disponível",
+      "$position": {
+        "top": "730px",
+        "left": "1367px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "618a1a0b-a439-488c-a087-4afdddcc955b": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "6384095d-bfc8-4613-ba39-2edf7a6a843e",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "337dde9e-a7a8-444e-bd8e-b285f5e7bd92",
+            "$typeOfContent": "raw-content",
+            "type": "SendRawMessage",
+            "settings": {
+              "metadata": {},
+              "type": "{{nameMenu@type}}",
+              "rawContent": "{{nameMenuContent}}"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "953ef59c-ce5c-4219-a58f-1fa645482c8c",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "147516a7-85e6-4321-8b1f-13dc40867c42",
+          "typeOfStateId": "state",
+          "$connId": "con_93",
+          "$id": "1cd49e89-6ad5-4eeb-85ba-9f8f4b21b201",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Encerrar conversa"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "e45d1b22-b81f-46d8-8094-617e7d009680",
+          "typeOfStateId": "state",
+          "$connId": "con_98",
+          "$id": "0d88cb3a-e7ea-4f96-a611-074f126c216e",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Aguardar atendimento"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "3da27423-6a2e-4777-8950-091dd70ce30b",
+          "typeOfStateId": "state",
+          "$connId": "con_103",
+          "$id": "eed95e79-a95d-401f-92e2-125b275d6465",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Voltar ao menu"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "e45d1b22-b81f-46d8-8094-617e7d009680",
+          "typeOfStateId": "state",
+          "$connId": "con_108",
+          "$id": "3e6e9c51-dc75-452f-90b4-1b2a79d0cfb3",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "notExists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "e5d03faa-b9f6-40cb-b0a1-19a5b838b350",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Name Menu - conteúdo dinâmico",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(platform){\n    /*******************************************************************************************************\\\n     * Todas as plataformas                                                                                *\n    \\*******************************************************************************************************/\n    var texto =\n    \"O que você prefere fazer agora?\";\n    var opcoes = [\n        {\n            \"value\": \"Aguardar atendimento\",\n            \"match\": ['aguard', 'atend', 'human'],\n            \"description\": \"\"\n        },\n        {\n            \"value\": \"Encerrar conversa\",\n            \"match\": ['encerra', 'sai', 'depois'],\n            \"description\": \"\"\n        },\n        {\n            \"value\": \"Voltar ao menu\",\n            \"match\": ['volt', 'menu'],\n            \"description\": \"\"\n        }\n    ];\n\n    /*******************************************************************************************************\\\n     * Exclusivo textMenu = true                                                                           *\n    \\*******************************************************************************************************/\n    var textMenu = false; // true -> (Exibe o menu como texto sempre), false -> (exibe normalmente como botões/lista)\n    var textExplain = `Digite o número correspondente a sua opção.`;\n    var textExplainButton = `Se preferir, pode clicar no botão abaixo e retornar ao menu principal.`;\n    var textExplainButtonOptions = ['#menu'];\n\n    /*******************************************************************************************************\\\n     * Exclusivo Whatsapp                                                                                  *\n    \\*******************************************************************************************************/\n    /*************************************************************************\\\n     * O Whatsapp contém as seguintes limitações na implmentação dos menus:  *\n     * - Máx. de 60 caracteres para o header e o footer                      *\n     * - Máx. de 1024 caracteres para o texto(body) da pergunta              *\n     *  -------------------------------------------------------------------  *\n     * Limitações do Button Menu:                                            *\n     * - Máx. de 3 itens(botões) por pergunta                                *\n     * - Máx. de 20 caracteres para o texto do botão                         *\n     * Limitações do List Menu:                                              *\n     * - Máx. de 10 itens(opções) por lista                                  *\n     * - Máx. de 24 caracteres para a opção da lista                         *\n     * - Máx. de 72 caracteres para a descrição da opção                     *\n    \\*************************************************************************/\n    var expectedMenuType = 'automatic'; // automatic(button menu, se opcoesWhatsApp <= 3, ou list menu, se opcoesWhatsApp > 3), list ou button, text_menu\n    var opcoesWhatsApp = opcoes;\n    var textExplainButtonOptionsWhatsApp = textExplainButtonOptions;\n\n\n    /***                                                                                                          ***\n     * --------------- NÃO ALTERE NADA A PARTIR DESSE PONTO, A MENOS QUE SAIBA O QUE ESTÁ FAZENDO ----------------- *\n     ***                                                                                                          ***/\n\n    let param = {\n        platform,\n        texto,\n        opcoes,\n        opcoesWhatsApp,\n        textExplain,\n        textExplainButton,\n        textExplainButtonOptions,\n        textExplainButtonOptionsWhatsApp,\n    };\n    let config = {\n        textMenu,\n        expectedMenuType\n    };\n        \n    let dynamicContent = application_menu(param, config);\n\n    return dynamicContent;\n}\n\n/*******************************************************************************************************\\\n * Funções auxiliares                                                                                  *\n\\*******************************************************************************************************/\n{{resource.applicationMenu}}",
+            "inputVariables": [
+              "platform"
+            ],
+            "outputVariable": "nameMenu",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "adb444e5-8511-4fe1-a584-78785dfe2b4f",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Unescape string no obj",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "// Execução necessária pra evitar bug com o '\\n' no Blip\nfunction run(contentObj){\n    contentObj = JSON.parse(contentObj);\n    return contentObj.content; //Se content for um obj '\\n' será escapado, senão não\n}",
+            "inputVariables": [
+              "nameMenu"
+            ],
+            "outputVariable": "nameMenuContent",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "7df56163-3949-4fe7-956e-d04181839284",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Exibicao do menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Exibicao | {{state.name}}",
+            "action": "Quantidade"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [
+        {
+          "$id": "449121c4-a015-47d6-8ad9-d603441e935b",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Define inputInfo",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(inputContent, inputType, unexpectedInput, menu){\r\n    return get_input_info(inputContent, inputType, unexpectedInput, menu);\r\n}\r\n\r\n{{resource.validateInputOptions}}",
+            "inputVariables": [
+              "input.content",
+              "input.type",
+              "resource.unexpectedInput",
+              "nameMenu"
+            ],
+            "outputVariable": "inputInfo",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "b9c84aa2-3c42-4ce9-9223-4827b45cf895",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Selecao Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Selecao | {{state.name}}",
+            "action": "{{inputInfo@value}}"
+          },
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        },
+        {
+          "$id": "9d1f1d20-2431-4f97-ac28-5e04fa8388c7",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Resposta Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Resposta | {{state.name}}",
+            "action": "{{inputInfo@input}}"
+          },
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-a67dac82-f6f3-46e2-9608-e59c22983e06",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-239fc43b-f0c6-4d6d-8be7-cd4a04051f1c",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-06999a3c-6de2-4c1c-af7a-35849631a2be",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-2aa1226f-1091-4037-b395-9068b0ae7bb9",
+          "label": "UserInput",
+          "background": "#000000",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "618a1a0b-a439-488c-a087-4afdddcc955b",
+      "root": false,
+      "$title": "O que fazer sem atendente?",
+      "$position": {
+        "top": "677px",
+        "left": "1957px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "147516a7-85e6-4321-8b1f-13dc40867c42": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "e0b1b7f8-d616-44b5-94fd-3694635cc161",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "f9885a61-5f36-4218-aeb9-14ffff2eab02",
+          "$typeOfContent": "",
+          "type": "Redirect",
+          "$title": "Redirecionar a Exceptions",
+          "$invalid": false,
+          "settings": {
+            "context": {
+              "type": "text/plain",
+              "value": "{\n    \"content\": \"#sair\",\n    \"type\": \"text/plain\"\n}"
+            },
+            "address": "{{resource.globalConfig@serviceExceptions}}"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "background": "#2cc3d5",
+          "label": "RedirectTo",
+          "id": "blip-tag-8cdf16cc-9155-df12-51ac-105a193ffda6",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-4ac63e43-7b0b-49a5-b4cc-3605b9628241",
+          "label": "Redirect",
+          "background": "#1EA1FF",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "147516a7-85e6-4321-8b1f-13dc40867c42",
+      "root": false,
+      "$title": "Encerra Conversa",
+      "$position": {
+        "top": "572px",
+        "left": "1611px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "3da27423-6a2e-4777-8950-091dd70ce30b": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "e0b1b7f8-d616-44b5-94fd-3694635cc161",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "f9885a61-5f36-4218-aeb9-14ffff2eab02",
+          "$typeOfContent": "",
+          "type": "Redirect",
+          "$title": "Redirecionar a Exceptions",
+          "$invalid": false,
+          "settings": {
+            "context": {
+              "type": "text/plain",
+              "value": "{\n    \"content\": \"#menu\",\n    \"type\": \"text/plain\"\n}"
+            },
+            "address": "{{resource.globalConfig@serviceExceptions}}"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "background": "#2cc3d5",
+          "label": "RedirectTo",
+          "id": "blip-tag-8cdf16cc-9155-df12-51ac-105a193ffda6",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-1e529481-28fe-40ad-8220-2a7be038338e",
+          "label": "Redirect",
+          "background": "#1EA1FF",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "3da27423-6a2e-4777-8950-091dd70ce30b",
+      "root": false,
+      "$title": "Volta ao menu inicial",
+      "$position": {
+        "top": "677px",
+        "left": "2207px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "desk:867dec83-f666-42f8-869d-fdde53946863": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": false,
+            "conditions": [
+              {
+                "source": "context",
+                "variable": "desk_forwardToDeskState_status",
+                "comparison": "equals",
+                "values": [
+                  "Success"
+                ]
+              }
+            ],
+            "$cardContent": {
+              "document": {
+                "id": "4b2054ac-e136-47b4-bf52-eb6fac6a50de",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": false,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "$isDeskOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "input.type",
+              "comparison": "equals",
+              "values": [
+                "application/vnd.iris.ticket+json"
+              ]
+            },
+            {
+              "source": "context",
+              "variable": "input.content@status",
+              "comparison": "equals",
+              "values": [
+                "ClosedAttendant"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "$connId": "con_113",
+          "$id": "9b307e00-0b9e-411a-bced-5ef5ce42f15e"
+        },
+        {
+          "$isDeskOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "input.type",
+              "comparison": "equals",
+              "values": [
+                "application/vnd.iris.ticket+json"
+              ]
+            },
+            {
+              "source": "context",
+              "variable": "input.content@status",
+              "comparison": "equals",
+              "values": [
+                "ClosedClient"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "$connId": "con_118",
+          "$id": "1765d26d-5a82-46d0-8698-931273cf0450"
+        },
+        {
+          "$isDeskOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "input.type",
+              "comparison": "equals",
+              "values": [
+                "application/vnd.iris.ticket+json"
+              ]
+            },
+            {
+              "source": "context",
+              "variable": "input.content@status",
+              "comparison": "equals",
+              "values": [
+                "ClosedClientInactivity"
+              ]
+            }
+          ],
+          "$invalid": false,
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "$connId": "con_123",
+          "$id": "8c748f4e-5cd9-447b-a275-26f5131fab9d"
+        },
+        {
+          "$isDeskOutput": true,
+          "$isDeskDefaultOutput": true,
+          "conditions": [
+            {
+              "source": "context",
+              "variable": "desk_forwardToDeskState_status",
+              "comparison": "equals",
+              "values": [
+                "Error"
+              ]
+            }
+          ],
+          "stateId": "fallback",
+          "$invalid": false
+        },
+        {
+          "stateId": "fe85b79d-fcd5-47b4-9814-a347b6c9c557",
+          "typeOfStateId": "state",
+          "$connId": "con_128",
+          "$id": "b9d3714f-59a3-4d85-b6bb-7becb8813400",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "contains",
+              "values": [
+                "#finaliza",
+                "#encerra",
+                "#cancel",
+                "#sair"
+              ]
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "6fa88077-1d30-4091-9f2d-1530c25d9d62",
+          "$typeOfContent": "",
+          "type": "ForwardToDesk",
+          "conditions": [],
+          "settings": {},
+          "$invalid": false
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "desk:867dec83-f666-42f8-869d-fdde53946863",
+        "$invalid": false
+      },
+      "$tags": [],
+      "id": "desk:867dec83-f666-42f8-869d-fdde53946863",
+      "deskStateVersion": "3.0.0",
+      "root": false,
+      "$title": "Aguardar na fila",
+      "$afterStateChangedActions": [
+        {
+          "$id": "a0944b48-fed4-4e4d-83f3-fed28470ad44",
+          "$typeOfContent": "",
+          "type": "LeavingFromDesk",
+          "conditions": [],
+          "settings": {}
+        }
+      ],
+      "$position": {
+        "top": "1391px",
+        "left": "803px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "e45d1b22-b81f-46d8-8094-617e7d009680": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "86667929-c0a7-473d-b066-fbed10260d73",
+                "type": "text/plain",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [
+        {
+          "$id": "1d5b798b-3d03-4765-9690-4ddd1f06fbdf",
+          "$typeOfContent": "",
+          "type": "MergeContact",
+          "$title": "Definir contato (Pool)",
+          "$invalid": false,
+          "settings": {
+            "extras": {
+              "Pool": "{{helpDeskEntry@originalTeam}}"
+            }
+          },
+          "conditions": []
+        },
+        {
+          "$id": "5c7c567c-a137-4190-9c58-b72ea556291d",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Sync Pool between Router and this bot",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{  \n    \"id\": \"{{random.guid}}\",\n    \"method\": \"merge\",\n    \"uri\": \"/contacts\",\n    \"type\": \"application/vnd.lime.contact+json\",\n    \"resource\": {\n        \"identity\": \"{{input.message.fromidentity}}\",\n        \"extras\": {\n            \"Pool\": \"{{originAttendant}}\"\n        }\n    }\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "desk:867dec83-f666-42f8-869d-fdde53946863",
+        "$invalid": false,
+        "typeOfStateId": "state"
+      },
+      "id": "e45d1b22-b81f-46d8-8094-617e7d009680",
+      "root": false,
+      "$title": "Encaminha para a equipe original",
+      "$position": {
+        "top": "917px",
+        "left": "1957px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "$tags": [
+        {
+          "id": "blip-tag-9a062d78-fae4-4a35-8ce2-836607361ff5",
+          "label": "MergeContact",
+          "background": "#FF1E90",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-ba36b28d-52bf-4cd3-9533-12de2ee799f1",
+          "label": "ProcessHttp",
+          "background": "#7762E3",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-fe6ba1bb-12ff-42dd-9c7c-7142d33c6f1d",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        }
+      ]
+    },
+    "3d168519-6e80-4887-b652-e290db0fccf5": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "6384095d-bfc8-4613-ba39-2edf7a6a843e",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "337dde9e-a7a8-444e-bd8e-b285f5e7bd92",
+            "$typeOfContent": "raw-content",
+            "type": "SendRawMessage",
+            "settings": {
+              "metadata": {},
+              "type": "{{nameMenu@type}}",
+              "rawContent": "{{nameMenuContent}}"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "953ef59c-ce5c-4219-a58f-1fa645482c8c",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "4324e637-92ef-4be4-8368-6ea45fa12339",
+          "typeOfStateId": "state",
+          "$connId": "con_133",
+          "$id": "1fc47242-5b78-46da-a39a-f7a18f287c71",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Sim"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "typeOfStateId": "state",
+          "$connId": "con_138",
+          "$id": "5e82b30e-ea88-407b-9c05-3dc85c3a328f",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Não"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "ef89acdd-9833-4ae9-9b1a-dde34030d006",
+          "typeOfStateId": "state",
+          "$connId": "con_143",
+          "$id": "71512903-2baf-4543-abfe-2e2e1541da6f",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "notExists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "e5d03faa-b9f6-40cb-b0a1-19a5b838b350",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Name Menu - conteúdo dinâmico",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(platform){\n    /*******************************************************************************************************\\\n     * Todas as plataformas                                                                                *\n    \\*******************************************************************************************************/\n    var texto =\n    \"O que você prefere fazer agora?\";\n    var opcoes = [\n        {\n            \"value\": \"Aguardar atendimento\",\n            \"match\": ['aguard', 'atend', 'human'],\n            \"description\": \"\"\n        },\n        {\n            \"value\": \"Encerrar conversa\",\n            \"match\": ['encerra', 'sai', 'depois'],\n            \"description\": \"\"\n        },\n        {\n            \"value\": \"Voltar ao menu\",\n            \"match\": ['volt', 'menu'],\n            \"description\": \"\"\n        }\n    ];\n\n    /*******************************************************************************************************\\\n     * Exclusivo textMenu = true                                                                           *\n    \\*******************************************************************************************************/\n    var textMenu = false; // true -> (Exibe o menu como texto sempre), false -> (exibe normalmente como botões/lista)\n    var textExplain = `Digite o número correspondente a sua opção.`;\n    var textExplainButton = `Se preferir, pode clicar no botão abaixo e retornar ao menu principal.`;\n    var textExplainButtonOptions = ['#menu'];\n\n    /*******************************************************************************************************\\\n     * Exclusivo Whatsapp                                                                                  *\n    \\*******************************************************************************************************/\n    /*************************************************************************\\\n     * O Whatsapp contém as seguintes limitações na implmentação dos menus:  *\n     * - Máx. de 60 caracteres para o header e o footer                      *\n     * - Máx. de 1024 caracteres para o texto(body) da pergunta              *\n     *  -------------------------------------------------------------------  *\n     * Limitações do Button Menu:                                            *\n     * - Máx. de 3 itens(botões) por pergunta                                *\n     * - Máx. de 20 caracteres para o texto do botão                         *\n     * Limitações do List Menu:                                              *\n     * - Máx. de 10 itens(opções) por lista                                  *\n     * - Máx. de 24 caracteres para a opção da lista                         *\n     * - Máx. de 72 caracteres para a descrição da opção                     *\n    \\*************************************************************************/\n    var expectedMenuType = 'automatic'; // automatic(button menu, se opcoesWhatsApp <= 3, ou list menu, se opcoesWhatsApp > 3), list ou button, text_menu\n    var opcoesWhatsApp = opcoes;\n    var textExplainButtonOptionsWhatsApp = textExplainButtonOptions;\n\n\n    /***                                                                                                          ***\n     * --------------- NÃO ALTERE NADA A PARTIR DESSE PONTO, A MENOS QUE SAIBA O QUE ESTÁ FAZENDO ----------------- *\n     ***                                                                                                          ***/\n\n    let param = {\n        platform,\n        texto,\n        opcoes,\n        opcoesWhatsApp,\n        textExplain,\n        textExplainButton,\n        textExplainButtonOptions,\n        textExplainButtonOptionsWhatsApp,\n    };\n    let config = {\n        textMenu,\n        expectedMenuType\n    };\n        \n    let dynamicContent = application_menu(param, config);\n\n    return dynamicContent;\n}\n\n/*******************************************************************************************************\\\n * Funções auxiliares                                                                                  *\n\\*******************************************************************************************************/\n{{resource.applicationMenu}}",
+            "inputVariables": [
+              "platform"
+            ],
+            "outputVariable": "nameMenu",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "adb444e5-8511-4fe1-a584-78785dfe2b4f",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Unescape string no obj",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "// Execução necessária pra evitar bug com o '\\n' no Blip\nfunction run(contentObj){\n    contentObj = JSON.parse(contentObj);\n    return contentObj.content; //Se content for um obj '\\n' será escapado, senão não\n}",
+            "inputVariables": [
+              "nameMenu"
+            ],
+            "outputVariable": "nameMenuContent",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "7df56163-3949-4fe7-956e-d04181839284",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Exibicao do menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Exibicao | {{state.name}}",
+            "action": "Quantidade"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [
+        {
+          "$id": "449121c4-a015-47d6-8ad9-d603441e935b",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Define inputInfo",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(inputContent, inputType, unexpectedInput, menu){\r\n    return get_input_info(inputContent, inputType, unexpectedInput, menu);\r\n}\r\n\r\n{{resource.validateInputOptions}}",
+            "inputVariables": [
+              "input.content",
+              "input.type",
+              "resource.unexpectedInput",
+              "nameMenu"
+            ],
+            "outputVariable": "inputInfo",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "b9c84aa2-3c42-4ce9-9223-4827b45cf895",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Selecao Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Selecao | {{state.name}}",
+            "action": "{{inputInfo@value}}"
+          },
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        },
+        {
+          "$id": "9d1f1d20-2431-4f97-ac28-5e04fa8388c7",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Resposta Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Resposta | {{state.name}}",
+            "action": "{{inputInfo@input}}"
+          },
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-3cdddcd2-b924-426c-ac10-1205c8233a6d",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-0bc2e225-2f8f-4bbe-bed5-26cbad40e990",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-ea4f22d5-9922-49e6-bbd4-fcf5a9e0305d",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-cd72afaa-4168-46d3-8675-234cc810de95",
+          "label": "UserInput",
+          "background": "#000000",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "3d168519-6e80-4887-b652-e290db0fccf5",
+      "root": false,
+      "$title": "Quer continuar inatividade?",
+      "$position": {
+        "top": "806px",
+        "left": "440px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "4324e637-92ef-4be4-8368-6ea45fa12339": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "6340918e-3d4b-4eca-9d7a-0a5af20009ff",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "ed3370a5-9d64-4017-99b9-c9de48308567",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "ed3370a5-9d64-4017-99b9-c9de48308567",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "c338ac95-0469-462a-a92d-bf2cf0abb364",
+            "$typeOfContent": "text",
+            "type": "SendMessage",
+            "settings": {
+              "id": "a182920b-b36e-4fca-8785-82076a6500bf",
+              "type": "text/plain",
+              "content": "Aguarde um momento enquanto transfiro você para um atendimento humano!\n\nAdorei falar com você! Até mais!",
+              "metadata": {}
+            },
+            "$cardContent": {
+              "document": {
+                "id": "a182920b-b36e-4fca-8785-82076a6500bf",
+                "type": "text/plain",
+                "content": "Aguarde um momento enquanto transfiro você para um atendimento humano!\n\nAdorei falar com você! Até mais!"
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "0880721a-dd7d-4724-ad77-ed0e3af063c2",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "02ba9626-7816-470f-8277-2215686a1fd0",
+          "$typeOfContent": "",
+          "type": "Redirect",
+          "$title": "Redireciona ao Help Desk",
+          "$invalid": false,
+          "settings": {
+            "context": {
+              "type": "text/plain",
+              "value": "{\n    \"team\": [\"Default\"]\n}"
+            },
+            "address": "{{resource.globalConfig@serviceHelpDesk}}"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "e45d1b22-b81f-46d8-8094-617e7d009680",
+        "$invalid": false,
+        "typeOfStateId": "state"
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-afd8d053-17e0-49fc-b9c6-45f4cf207daf",
+          "label": "Redirect",
+          "background": "#1EA1FF",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-e6873434-262c-427d-bbe9-c30fddd3462f",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "4324e637-92ef-4be4-8368-6ea45fa12339",
+      "root": false,
+      "$title": "Aguarda Atendimento",
+      "$position": {
+        "top": "1199px",
+        "left": "328px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "88ab4c39-dea5-4fa9-b0a0-67667984d7b6": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "7238f03c-4cc1-4d23-8a71-58d732317719",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "7e1ba9aa-f274-4e58-aadc-1635e18f6695",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Extrai origem do contato",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(contactIdentity){\n    var source = contactIdentity.split('@')[1];\n    switch(source){\n        case 'wa.gw.msging.net':\n            return \"Whatsapp\";\n        case '0mn.io':\n            return \"Site\";\n        case 'messenger.gw.msging.net':\n            return \"Facebook\";\n        case 'instagram.gw.msging.net':\n            return \"Instagram\";\n        case 'skype.gw.msging.net':\n            return \"Skype\";\n        case 'telegram.gw.msging.net':\n            return \"Telegram\";\n        case 'abs.gw.msging.net':\n            return \"MS Teams\";\n        default:\n            return \"Other\";\n    }\n}\n",
+            "inputVariables": [
+              "contact.identity"
+            ],
+            "outputVariable": "platform",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "d74c8754-f542-4544-a0de-b9088ef15497",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável (helpDeskEntry)",
+          "$invalid": false,
+          "settings": {
+            "variable": "helpDeskEntry",
+            "value": "{\"team\": [\"default\"]}"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "$invalid": false,
+        "typeOfStateId": "state",
+        "stateId": "welcome"
+      },
+      "$tags": [
+        {
+          "background": "#1EA1FF",
+          "label": "DirectTo",
+          "id": "blip-tag-6cc0c368-d659-8020-cb20-56179cc83b97",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-b7b99352-d0a9-4540-8167-1f9a42aa157b",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-038eb396-ebde-42df-82e0-b61f7de973e5",
+          "label": "SetVariable",
+          "background": "#FF4A1E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-e1aa96d9-5aee-4915-bfb8-7562aaf99519",
+          "label": "UserInput",
+          "background": "#000000",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "88ab4c39-dea5-4fa9-b0a0-67667984d7b6",
+      "root": false,
+      "$title": "Growth - To default",
+      "$position": {
+        "top": "609px",
+        "left": "2964px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "invalidOutputs": true
+    },
+    "99521822-0e24-4a5a-afb4-081ea06d395a": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "8de8235d-d3a5-46ee-aa1a-4c712c5f0afd",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "99521822-0e24-4a5a-afb4-081ea06d395a",
+          "typeOfStateId": "state",
+          "$connId": "con_148",
+          "$id": "60dd2a69-6e49-426a-a22f-4cde23328948",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "exists",
+              "values": [],
+              "variable": "conversaTicketStr@msgRef"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "112920dc-4f7e-447c-95e9-e9dd0474ff2f",
+          "typeOfStateId": "state",
+          "$connId": "con_153",
+          "$id": "fef51f2e-f4b5-4deb-9ad5-4f509b0446d6",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "true"
+              ],
+              "variable": "resource.globalConfig@ativarNPS"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "244dc729-d82b-4737-8ce9-f72166e74335",
+          "typeOfStateId": "state",
+          "$connId": "con_158",
+          "$id": "ff4c280c-0768-458a-87ff-efeae5b69bd1",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [],
+      "$leavingCustomActions": [
+        {
+          "$id": "9f1354a5-8f2d-4f29-9390-f94013d57b38",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Monta a URI da busca de mensagens",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(ticket, conversaTicketStr){\n\tticket = JSON.parse(ticket);\n\tconversaTicketStr = JSON.parse(conversaTicketStr);\n\n\tvar uri = `/tickets/${ticket.id}/messages?getFromOwnerIfTunnel=true&$take=30`;\n\turi += (conversaTicketStr.msgRef) ? `&messageId=${encodeURIComponent(conversaTicketStr.msgRef)}&direction=desc` : ``;\n\n\treturn uri;\n}",
+            "inputVariables": [
+              "ticket",
+              "conversaTicketStr"
+            ],
+            "LocalTimeZoneEnabled": false,
+            "outputVariable": "uriBuscaMsgs"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "51b13ab5-4f71-4263-a3c0-4a50c66b0f0a",
+          "$typeOfContent": "",
+          "type": "ProcessHttp",
+          "$title": "Req. HTTP - busca conversa",
+          "$invalid": false,
+          "settings": {
+            "headers": {
+              "Authorization": "{{resource.globalConfig@botHelpDeskToken}}"
+            },
+            "method": "POST",
+            "body": "{\n    \"id\": \"1\",\n    \"to\": \"postmaster@desk.msging.net\",\n    \"method\": \"get\",\n    \"uri\": \"{{uriBuscaMsgs}}\"\n}",
+            "uri": "{{resource.blipApi@commandsUrl}}",
+            "responseStatusVariable": "statusCode",
+            "responseBodyVariable": "result"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "66a6baa0-daa9-4c59-8a62-0c8ae154eaeb",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Trata o texto da conversa",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(statusCode, result, ticket){\n    if(statusCode != 200){\n        return '';\n    }\n\n    ticket = JSON.parse(ticket);\n    result = JSON.parse(result);\n    var tipoTexto = 'html'; // as opções são: html e plain\n\n    // Quando o parametro recebido é grande, o Blip passa um obj. {\"REDUCED\": true}\n    if(result.REDUCED){\n        var texto =\n        `<b>[REDUCED] Conteúdo muito grande, não suportado pelo Blip</b>.<br>`+\n        `Verifique o histórico de atendimento para visular as mensagens.<br>`;\n        texto += (ticket.atendente) ? `<br>Atendido por: ${ticket.atendente}` : ``;\n\n        if(tipoTexto != 'html'){\n            texto = texto.replace(/<\\/?b>/g, '').replace(/<br>/g, '\\n');\n        }\n\n        return {\n            \"msgRef\": \"\",\n            \"texto\": texto\n        };\n    }\n\n    if(result.resource && (result.resource.total > 0)){\n        var itensConversa = result.resource.items;\n\n        // Extrai os itens referentes ao ticket\n        var iniIndex = 0 // o 1º item da array será a última mensagem (mais recente) do bloco de mensagens\n        var fimIndex = itensConversa.findIndex((item) => (item.type == 'application/vnd.iris.ticket+json'));\n        fimIndex = (fimIndex == -1) ? itensConversa.length : fimIndex;\n        var itensConversaTicket = itensConversa.slice(iniIndex, fimIndex+1).reverse(); //extrai itens do ticket e os inverte, deixando da msg(item) mais antiga para mais nova\n        \n        // Tranforma os itens da conversa em itens de texto e define a msg de referência para continuação da busca\n        var itemRef = itensConversaTicket[0];\n        var msgRef = '';\n        var agente = {\n            \"received\": {undefined: \"Cliente\"},\n            \"sent\": {undefined: \"Bot\", \"Human\": \"Atendente\"}\n        };\n        if(tipoTexto == 'html'){\n            var texto = transform_to_html_text(itensConversaTicket, agente, ticket.atendente);\n        }\n        else{\n            var texto = transform_to_simple_text(itensConversaTicket, agente, ticket.atendente);\n        }\n        if((itemRef.type != 'application/vnd.iris.ticket+json') || itemRef.content.parentSequentialId){\n            msgRef = itemRef.id;\n        };\n\n        return {\n            \"msgRef\": msgRef,\n            \"texto\": texto\n        };\n    }\n\n    return {\n        \"msgRef\": \"\",\n        \"texto\": \"\"\n    };\n}\n\nfunction transform_to_simple_text(itens, mapaAgente, atendente=''){\n    var conversaTicketStr = itens.map((item) => {\n        if(item.type == 'text/plain'){\n            return `${mapaAgente[item.direction][item.metadata[\"#messageEmitter\"]]}: ${item.content}`;\n        }\n        else if(item.type == 'application/vnd.iris.ticket+json'){\n            var ticketNo = `Ticket #${item.content.sequentialId}`;\n            ticketNo += (item.content.parentSequentialId) ? ` Mestre(Ticket #${item.content.parentSequentialId})\\n`: `\\n`;\n            return ticketNo;\n        }\n        else if(item.type == 'application/vnd.lime.media-link+json'){\n            var midia =  `${mapaAgente[item.direction][item.metadata[\"#messageEmitter\"]]}: ${item.content.type} (${item.content.uri})`;\n            midia += (item.content.text) ? `\\n${item.content.text}` : ``;\n            return midia;\n        }\n        else{\n            return `${mapaAgente[item.direction][item.metadata[\"#messageEmitter\"]]}: [conteúdo dinâmico]`;\n        }\n    });\n\n    if(atendente){\n        conversaTicketStr[conversaTicketStr.length] = `\\nAtendido por: ${atendente}`;\n    }\n\n    return conversaTicketStr.join('\\n'); // Une os textos com uma quebra de linha\n}\n\nfunction transform_to_html_text(itens, mapaAgente, atendente=''){\n    var conversaTicketStr = itens.map((item) => {\n        if(item.type == 'text/plain'){\n            return `<b>${mapaAgente[item.direction][item.metadata[\"#messageEmitter\"]]}:</b> ${item.content}`;\n        }\n        else if(item.type == 'application/vnd.iris.ticket+json'){\n            var ticketNo = `<b>Ticket #${item.content.sequentialId}</b>`;\n            ticketNo += (item.content.parentSequentialId) ? ` - Mestre(Ticket #${item.content.parentSequentialId})<br>`: `<br>`;\n            return ticketNo;\n        }\n        else if(item.type == 'application/vnd.lime.media-link+json'){\n            var midia =  `<b>${mapaAgente[item.direction][item.metadata[\"#messageEmitter\"]]}:</b> ${item.content.type} (${item.content.uri})`;\n            midia += (item.content.text) ? `<br>${item.content.text}` : ``;\n            return midia;\n        }\n        else{\n            return `<b>${mapaAgente[item.direction][item.metadata[\"#messageEmitter\"]]}:</b> [conteúdo dinâmico]`;\n        }\n    });\n\n    if(atendente){\n        conversaTicketStr[conversaTicketStr.length] = `<br>Atendido por: ${atendente}`;\n    }\n\n    return conversaTicketStr.join('<br>'); // Une os textos com uma quebra de linha\n}",
+            "inputVariables": [
+              "statusCode",
+              "result",
+              "ticket"
+            ],
+            "outputVariable": "conversaTicketStr",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "f9db81a9-e43e-4397-b118-f94d8cc73ba2",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Concatena o bloco de mensagens ao texto tornando o completo",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(convTextoCompleto, conversaTicketStr){\n\tconversaTicketStr = JSON.parse(conversaTicketStr);\n\t\n\treturn convTextoCompleto + '\\n' + conversaTicketStr.texto;\n}",
+            "inputVariables": [
+              "convTextoCompleto",
+              "conversaTicketStr"
+            ],
+            "outputVariable": "convTextoCompleto",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-0dbb9626-87d9-4a5b-a334-d963ba49330b",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-731c94f6-240c-4639-aa09-8cec3fa68de0",
+          "label": "ProcessHttp",
+          "background": "#7762E3",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "99521822-0e24-4a5a-afb4-081ea06d395a",
+      "root": false,
+      "$title": "5.1 - Gera o texto da conversa",
+      "$position": {
+        "top": "1529px",
+        "left": "591px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "e71dd590-e060-4019-9ebe-7ea4b99a294e": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "76137ac2-42ab-4ee9-aef7-743cb9160a98",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "d5d89389-6d0b-47ca-ba01-cf2fa3467c9e",
+          "typeOfStateId": "state",
+          "$connId": "con_163",
+          "$id": "48b1dbae-844d-4ab7-adcc-78c5330ec26b",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "type": "TrackEvent",
+          "$title": "Registrar Solicitação sem Atendente",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Solicitação",
+            "action": "Sem Atendente"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "32e1d275-fe07-485c-8857-389efc7f94af",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável [FalhaAtendimento]",
+          "$invalid": false,
+          "settings": {
+            "variable": "FalhaAtendimento",
+            "value": "semAtendente"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false,
+        "typeOfStateId": "state"
+      },
+      "id": "e71dd590-e060-4019-9ebe-7ea4b99a294e",
+      "root": false,
+      "$title": "Registra Nenhum Atendente Disponível",
+      "$position": {
+        "top": "902px",
+        "left": "1091px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "isAiGenerated": false,
+      "$tags": [
+        {
+          "id": "blip-tag-c4df287d-71c9-42d2-b58e-aa80ee7a2f23",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-461d9033-4243-4506-aee2-fd77dd395d8c",
+          "label": "SetVariable",
+          "background": "#FF4A1E",
+          "canChangeBackground": false
+        }
+      ]
+    },
+    "b137508e-6d5e-4fe2-a627-b650794c9468": {
+      "$contentActions": [
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "fd1c385b-7adc-4efb-b829-3b137d4e97c0",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right"
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "d5d89389-6d0b-47ca-ba01-cf2fa3467c9e",
+          "typeOfStateId": "state",
+          "$connId": "con_168",
+          "$id": "9c4e6246-4956-4ed1-a3c8-2eb081ae9dd6",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "type": "TrackEvent",
+          "$title": "Registrar Solicitação Fora do Horário",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Solicitação",
+            "action": "Fora Horario Atendimento"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "3fe90e20-9cd0-444e-98f0-8073ebb6eb15",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável [FalhaAtendimento]",
+          "$invalid": false,
+          "settings": {
+            "variable": "FalhaAtendimento",
+            "value": "foraHorario"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "onboarding",
+        "$invalid": false,
+        "typeOfStateId": "state"
+      },
+      "id": "b137508e-6d5e-4fe2-a627-b650794c9468",
+      "root": false,
+      "$title": "Registra Fora do Horário de Atendimento",
+      "$position": {
+        "top": "717px",
+        "left": "1072px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "isAiGenerated": false,
+      "$tags": [
+        {
+          "id": "blip-tag-d623357e-6340-4055-bc4f-ec542438a133",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-7bd4cd82-db6b-4637-a049-374d3983a380",
+          "label": "SetVariable",
+          "background": "#FF4A1E",
+          "canChangeBackground": false
+        }
+      ]
+    },
+    "ec9251ee-0fb6-46fa-9d76-3c63c4984325": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "ba06a5f2-378d-4fc9-b6a6-666cac21db3f",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "f2ccce5f-60ca-40f2-9f43-d7d4dbd17cb0",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "f2ccce5f-60ca-40f2-9f43-d7d4dbd17cb0",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "285e8a5f-a639-492c-8928-0c65eca423c4",
+            "$typeOfContent": "text",
+            "type": "SendMessage",
+            "settings": {
+              "id": "2a734555-bc91-4a2d-9227-c16b7e570451",
+              "type": "text/plain",
+              "content": "{{mensagemPreAtendimento}}",
+              "metadata": {}
+            },
+            "$cardContent": {
+              "document": {
+                "id": "2a734555-bc91-4a2d-9227-c16b7e570451",
+                "type": "text/plain",
+                "content": "{{mensagemPreAtendimento}}"
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": true,
+            "$cardContent": {
+              "document": {
+                "id": "66d5f763-5b14-4502-ac77-38c8182c98a3",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "desk:b69ef3a2-9983-48f8-9d40-16bad478a460",
+          "typeOfStateId": "state",
+          "$connId": "con_173",
+          "$id": "72087b8d-5db7-48d7-b212-657a605b89eb",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "a0ce70a4-ff9d-4417-bc89-6cd3025b998b",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Exibe  Mensagem pré atendimento",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(horarios, mensagemAtendimento) {\n\n  if(!mensagemAtendimento){\n    var mensagemAtendimento = \"\"\n  }\n\n  var horaAtual = new Date();\n  var hora = horaAtual.getHours();\n  var minutos = horaAtual.getMinutes();\n  var horarios = JSON.parse(horarios);\n  var { inicio: almocoInicio, fim: almocoFim } = horarios.horarioAlmoco;\n  var { inicio: atendimentoInicio, fim: atendimentoFim } = horarios.horarioAtendimento;\n\n  var [almocoInicioHora, almocoInicioMinutos] = almocoInicio.split(\":\").map(Number);\n  var [almocoFimHora, almocoFimMinutos] = almocoFim.split(\":\").map(Number);\n  var [atendimentoInicioHora, atendimentoInicioMinutos] = atendimentoInicio.split(\":\").map(Number);\n  var [atendimentoFimHora, atendimentoFimMinutos] = atendimentoFim.split(\":\").map(Number);\n\n  if ((hora === almocoInicioHora && minutos >= almocoInicioMinutos) ||\n    (hora > almocoInicioHora && hora < almocoFimHora) ||\n    (hora === almocoFimHora && minutos <= almocoFimMinutos)) {\n    return `Estamos em horário de almoço (das ${almocoInicio} às ${almocoFim}), mas não se preocupe, assim que possível nosso time irá atendê-lo (a).`;\n  } else if (hora < atendimentoInicioHora ||\n    hora === atendimentoInicioHora && minutos < atendimentoInicioMinutos ||\n    hora >= atendimentoFimHora ||\n    hora === atendimentoFimHora && minutos >= atendimentoFimMinutos) {\n    return `Nosso atendimento é das ${atendimentoInicio} às ${atendimentoFim}, mas não se preocupe, assim que possível nosso time irá atendê-lo (a).`;\n  } else {\n    return mensagemAtendimento;\n  }\n}\n",
+            "inputVariables": [
+              "resource.horarioAtendimento",
+              "mensagemAtendimento"
+            ],
+            "outputVariable": "mensagemPreAtendimento",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [
+        {
+          "$id": "55a6fb6a-4630-43df-9a1f-072b61270288",
+          "$typeOfContent": "",
+          "type": "SetVariable",
+          "$title": "Definir variável mensagemAtendimento",
+          "$invalid": false,
+          "settings": {
+            "variable": "mensagemAtendimento"
+          },
+          "conditions": []
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "isAiGenerated": false,
+      "$tags": [
+        {
+          "id": "blip-tag-d35100cf-bce7-4bac-9f9a-2649f721e538",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-a906b73c-2de0-467b-85a0-6bf117f2f58d",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "ec9251ee-0fb6-46fa-9d76-3c63c4984325",
+      "root": false,
+      "$title": "Mensagem Pré Atendimento",
+      "$position": {
+        "top": "538px",
+        "left": "810px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false
+    },
+    "83aa9ad0-390b-477d-ab7e-6cbaa3ae7af2": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "6384095d-bfc8-4613-ba39-2edf7a6a843e",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "337dde9e-a7a8-444e-bd8e-b285f5e7bd92",
+            "$typeOfContent": "raw-content",
+            "type": "SendRawMessage",
+            "settings": {
+              "metadata": {},
+              "type": "{{nameMenu@type}}",
+              "rawContent": "{{nameMenuContent}}"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "953ef59c-ce5c-4219-a58f-1fa645482c8c",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "244dc729-d82b-4737-8ce9-f72166e74335",
+          "typeOfStateId": "state",
+          "$connId": "con_178",
+          "$id": "2e7847e7-ee9f-4bcd-8577-63226fd0667d",
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": [],
+              "variable": "inputInfo@value"
+            },
+            {
+              "values": [
+                "Input Inesperado"
+              ],
+              "source": "context",
+              "comparison": "notEquals",
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "e5d03faa-b9f6-40cb-b0a1-19a5b838b350",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Name Menu - conteúdo dinâmico",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(platform){\n    /*******************************************************************************************************\\\n     * Todas as plataformas                                                                                *\n    \\*******************************************************************************************************/\n    var texto = \"Qual a sua nota para o atendimento que acabou de receber?\";\n    var opcoes = [\n        {\n            \"value\": \"Excelente\",\n            \"match\": ['Excelente'],\n            \"description\": \"⭐⭐⭐⭐⭐\"\n        },\n        {\n            \"value\": \"Bom\",\n            \"match\": ['Bom'],\n            \"description\": \"⭐⭐⭐⭐\"\n        },\n        {\n            \"value\": \"Regular\",\n            \"match\": ['Regular'],\n            \"description\": \"⭐⭐⭐\"\n        },\n        {\n            \"value\": \"Ruim\",\n            \"match\": ['Ruim'],\n            \"description\": \"⭐⭐\"\n        },\n        {\n            \"value\": \"Péssimo\",\n            \"match\": ['Péssimo'],\n            \"description\": \"⭐\"\n        },\n        {\n            \"value\": \"Não quero responder\",\n            \"match\": ['nao', 'responder'],\n            \"description\": \"Não gostaria de responder a pesquisa\"\n        }\n    ];\n\n    /*******************************************************************************************************\\\n     * Exclusivo textMenu = true                                                                           *\n    \\*******************************************************************************************************/\n    var textMenu = false; // true -> (Exibe o menu como texto sempre), false -> (exibe normalmente como botões/lista)\n    var textExplain = `Digite o número correspondente a sua opção.`;\n    var textExplainButton = `Se preferir, pode clicar no botão abaixo e retornar ao menu principal.`;\n    var textExplainButtonOptions = ['#menu'];\n\n    /*******************************************************************************************************\\\n     * Exclusivo Whatsapp                                                                                  *\n    \\*******************************************************************************************************/\n    /*************************************************************************\\\n     * O Whatsapp contém as seguintes limitações na implmentação dos menus:  *\n     * - Máx. de 60 caracteres para o header e o footer                      *\n     * - Máx. de 1024 caracteres para o texto(body) da pergunta              *\n     *  -------------------------------------------------------------------  *\n     * Limitações do Button Menu:                                            *\n     * - Máx. de 3 itens(botões) por pergunta                                *\n     * - Máx. de 20 caracteres para o texto do botão                         *\n     * Limitações do List Menu:                                              *\n     * - Máx. de 10 itens(opções) por lista                                  *\n     * - Máx. de 24 caracteres para a opção da lista                         *\n     * - Máx. de 72 caracteres para a descrição da opção                     *\n    \\*************************************************************************/\n    var expectedMenuType = 'automatic'; // automatic(button menu, se opcoesWhatsApp <= 3, ou list menu, se opcoesWhatsApp > 3), list ou button, text_menu\n    var opcoesWhatsApp = opcoes;\n    var textExplainButtonOptionsWhatsApp = textExplainButtonOptions;\n\n\n    /***                                                                                                          ***\n     * --------------- NÃO ALTERE NADA A PARTIR DESSE PONTO, A MENOS QUE SAIBA O QUE ESTÁ FAZENDO ----------------- *\n     ***                                                                                                          ***/\n\n    let param = {\n        platform,\n        texto,\n        opcoes,\n        opcoesWhatsApp,\n        textExplain,\n        textExplainButton,\n        textExplainButtonOptions,\n        textExplainButtonOptionsWhatsApp,\n    };\n    let config = {\n        textMenu,\n        expectedMenuType\n    };\n        \n    let dynamicContent = application_menu(param, config);\n\n    return dynamicContent;\n}\n\n/*******************************************************************************************************\\\n * Funções auxiliares                                                                                  *\n\\*******************************************************************************************************/\n{{resource.applicationMenu}}",
+            "inputVariables": [
+              "platform"
+            ],
+            "outputVariable": "nameMenu",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "adb444e5-8511-4fe1-a584-78785dfe2b4f",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Unescape string no obj",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "// Execução necessária pra evitar bug com o '\\n' no Blip\nfunction run(contentObj){\n    contentObj = JSON.parse(contentObj);\n    return contentObj.content; //Se content for um obj '\\n' será escapado, senão não\n}",
+            "inputVariables": [
+              "nameMenu"
+            ],
+            "outputVariable": "nameMenuContent",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "7df56163-3949-4fe7-956e-d04181839284",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Exibicao do menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Exibicao | {{state.name}}",
+            "action": "Quantidade"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [
+        {
+          "$id": "449121c4-a015-47d6-8ad9-d603441e935b",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Define inputInfo",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(inputContent, inputType, unexpected_input, menu){\r\n    return get_input_info(inputContent, inputType, unexpected_input, menu);\r\n}\r\n\r\n{{resource.validateInputOptions}}",
+            "inputVariables": [
+              "input.content",
+              "input.type",
+              "resource.unexpectedInput",
+              "nameMenu"
+            ],
+            "outputVariable": "inputInfo",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": [
+            {
+              "source": "input",
+              "comparison": "exists",
+              "values": []
+            }
+          ]
+        },
+        {
+          "$id": "b9c84aa2-3c42-4ce9-9223-4827b45cf895",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Seleção Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Selecao | {{state.name}}",
+            "action": "{{inputInfo@value}}"
+          },
+          "conditions": []
+        },
+        {
+          "$id": "9d1f1d20-2431-4f97-ac28-5e04fa8388c7",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Resposta Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Resposta | {{state.name}}",
+            "action": "{{inputInfo@input}}"
+          },
+          "conditions": []
+        },
+        {
+          "type": "TrackEvent",
+          "$title": "Registrar Avaliação por Atendente",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "ScoreAgent | {{ticket@atendente}}",
+            "action": "{{inputInfo@value}}"
+          },
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "endsWith",
+              "variable": "ticket@agentIdentity",
+              "values": [
+                "@blip.ai"
+              ]
+            }
+          ],
+          "$id": "c016b503-2e8d-4c3d-a4cc-d259e201f322"
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-677ea852-d839-473f-a588-962cf8a4e101",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-3a5c2e76-51e6-4d1f-a237-b6cf57240d46",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-b7eb641c-988e-41ed-9a5f-9f1b2deb500f",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-b9bc45f8-37b2-4fff-bc66-267828efacc8",
+          "label": "UserInput",
+          "background": "#000000",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "83aa9ad0-390b-477d-ab7e-6cbaa3ae7af2",
+      "root": false,
+      "$title": "G.3.0 - NPS (Bot)",
+      "$position": {
+        "top": "2186px",
+        "left": "793px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "isAiGenerated": false
+    },
+    "112920dc-4f7e-447c-95e9-e9dd0474ff2f": {
+      "$contentActions": [
+        {
+          "action": {
+            "$id": "6384095d-bfc8-4613-ba39-2edf7a6a843e",
+            "$typeOfContent": "chat-state",
+            "type": "SendMessage",
+            "settings": {
+              "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+              "type": "application/vnd.lime.chatstate+json",
+              "content": {
+                "state": "composing",
+                "interval": 1000
+              }
+            },
+            "$cardContent": {
+              "document": {
+                "id": "887580f9-9ec1-4233-ac0a-558e92de76bf",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                }
+              },
+              "editable": true,
+              "deletable": true,
+              "position": "left"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "action": {
+            "$id": "337dde9e-a7a8-444e-bd8e-b285f5e7bd92",
+            "$typeOfContent": "raw-content",
+            "type": "SendRawMessage",
+            "settings": {
+              "metadata": {},
+              "type": "{{nameMenu@type}}",
+              "rawContent": "{{nameMenuContent}}"
+            }
+          },
+          "$invalid": false
+        },
+        {
+          "input": {
+            "bypass": false,
+            "$cardContent": {
+              "document": {
+                "id": "953ef59c-ce5c-4219-a58f-1fa645482c8c",
+                "type": "text/plain",
+                "textContent": "Entrada do usuário",
+                "content": "Entrada do usuário"
+              },
+              "editable": false,
+              "deletable": true,
+              "position": "right",
+              "editing": false
+            },
+            "$invalid": false,
+            "expiration": "22:40"
+          },
+          "$invalid": false
+        }
+      ],
+      "$conditionOutputs": [
+        {
+          "stateId": "244dc729-d82b-4737-8ce9-f72166e74335",
+          "typeOfStateId": "state",
+          "$connId": "con_183",
+          "$id": "57147087-8054-4d8e-aada-d8f2804e4819",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Não"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        },
+        {
+          "stateId": "83aa9ad0-390b-477d-ab7e-6cbaa3ae7af2",
+          "typeOfStateId": "state",
+          "$connId": "con_188",
+          "$id": "97df8598-ca3f-4bb3-a66b-3b64c33b01f4",
+          "conditions": [
+            {
+              "source": "context",
+              "comparison": "equals",
+              "values": [
+                "Sim"
+              ],
+              "variable": "inputInfo@value"
+            }
+          ],
+          "$invalid": false
+        }
+      ],
+      "$enteringCustomActions": [
+        {
+          "$id": "e5d03faa-b9f6-40cb-b0a1-19a5b838b350",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Name Menu - conteúdo dinâmico",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(platform){\n    /*******************************************************************************************************\\\n     * Todas as plataformas                                                                                *\n    \\*******************************************************************************************************/\n    var texto = \"Deseja avaliar nosso atendimento?\";\n    var opcoes = [\n        {\n            \"value\": \"Sim\",\n            \"match\": ['sim', 'pode', 'cert', 'claro'],\n            \"description\": \"Preciso de ajuda em outra coisa\"\n        },\n        {\n            \"value\": \"Não\",\n            \"match\": ['não', 'nenhum'],\n            \"description\": \"Não preciso de ajuda em mais nada\"\n        }\n    ];\n\n    /*******************************************************************************************************\\\n     * Exclusivo textMenu = true                                                                           *\n    \\*******************************************************************************************************/\n    var textMenu = false; // true -> (Exibe o menu como texto sempre), false -> (exibe normalmente como botões/lista)\n    var textExplain = `Digite o número correspondente a sua opção.`;\n    var textExplainButton = `Se preferir, pode clicar no botão abaixo e retornar ao menu principal.`;\n    var textExplainButtonOptions = ['#menu'];\n\n    /*******************************************************************************************************\\\n     * Exclusivo Whatsapp                                                                                  *\n    \\*******************************************************************************************************/\n    /*************************************************************************\\\n     * O Whatsapp contém as seguintes limitações na implmentação dos menus:  *\n     * - Máx. de 60 caracteres para o header e o footer                      *\n     * - Máx. de 1024 caracteres para o texto(body) da pergunta              *\n     *  -------------------------------------------------------------------  *\n     * Limitações do Button Menu:                                            *\n     * - Máx. de 3 itens(botões) por pergunta                                *\n     * - Máx. de 20 caracteres para o texto do botão                         *\n     * Limitações do List Menu:                                              *\n     * - Máx. de 10 itens(opções) por lista                                  *\n     * - Máx. de 24 caracteres para a opção da lista                         *\n     * - Máx. de 72 caracteres para a descrição da opção                     *\n    \\*************************************************************************/\n    var expectedMenuType = 'automatic'; // automatic(button menu, se opcoesWhatsApp <= 3, ou list menu, se opcoesWhatsApp > 3), list ou button, text_menu\n    var opcoesWhatsApp = opcoes;\n    var textExplainButtonOptionsWhatsApp = textExplainButtonOptions;\n\n\n    /***                                                                                                          ***\n     * --------------- NÃO ALTERE NADA A PARTIR DESSE PONTO, A MENOS QUE SAIBA O QUE ESTÁ FAZENDO ----------------- *\n     ***                                                                                                          ***/\n\n    let param = {\n        platform,\n        texto,\n        opcoes,\n        opcoesWhatsApp,\n        textExplain,\n        textExplainButton,\n        textExplainButtonOptions,\n        textExplainButtonOptionsWhatsApp,\n    };\n    let config = {\n        textMenu,\n        expectedMenuType\n    };\n        \n    let dynamicContent = application_menu(param, config);\n\n    return dynamicContent;\n}\n\n/*******************************************************************************************************\\\n * Funções auxiliares                                                                                  *\n\\*******************************************************************************************************/\n{{resource.applicationMenu}}",
+            "inputVariables": [
+              "platform"
+            ],
+            "outputVariable": "nameMenu",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "adb444e5-8511-4fe1-a584-78785dfe2b4f",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Unescape string no obj",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "// Execução necessária pra evitar bug com o '\\n' no Blip\nfunction run(contentObj){\n    contentObj = JSON.parse(contentObj);\n    return contentObj.content; //Se content for um obj '\\n' será escapado, senão não\n}",
+            "inputVariables": [
+              "nameMenu"
+            ],
+            "outputVariable": "nameMenuContent",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "7df56163-3949-4fe7-956e-d04181839284",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Exibicao do menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Exibicao | {{state.name}}",
+            "action": "Quantidade"
+          },
+          "conditions": []
+        }
+      ],
+      "$leavingCustomActions": [
+        {
+          "$id": "449121c4-a015-47d6-8ad9-d603441e935b",
+          "$typeOfContent": "",
+          "type": "ExecuteScript",
+          "$title": "Define inputInfo",
+          "$invalid": false,
+          "settings": {
+            "function": "run",
+            "source": "function run(inputContent, inputType, unexpected_input, menu){\r\n    return get_input_info(inputContent, inputType, unexpected_input, menu);\r\n}\r\n\r\n{{resource.validateInputOptions}}",
+            "inputVariables": [
+              "input.content",
+              "input.type",
+              "resource.unexpectedInput",
+              "nameMenu"
+            ],
+            "outputVariable": "inputInfo",
+            "LocalTimeZoneEnabled": false
+          },
+          "conditions": []
+        },
+        {
+          "$id": "b9c84aa2-3c42-4ce9-9223-4827b45cf895",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Seleção Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Selecao | {{state.name}}",
+            "action": "{{inputInfo@value}}"
+          },
+          "conditions": [
+            {
+              "values": [],
+              "source": "context",
+              "comparison": "exists",
+              "variable": "inputInfo@value"
+            }
+          ]
+        },
+        {
+          "$id": "9d1f1d20-2431-4f97-ac28-5e04fa8388c7",
+          "$typeOfContent": "",
+          "type": "TrackEvent",
+          "$title": "Resposta Menu",
+          "$invalid": false,
+          "settings": {
+            "extras": {},
+            "category": "Resposta | {{state.name}}",
+            "action": "{{inputInfo@input}}"
+          },
+          "conditions": [
+            {
+              "values": [],
+              "source": "context",
+              "comparison": "exists",
+              "variable": "inputInfo@value"
+            }
+          ]
+        }
+      ],
+      "$inputSuggestions": [],
+      "$defaultOutput": {
+        "stateId": "fallback",
+        "$invalid": false
+      },
+      "$tags": [
+        {
+          "id": "blip-tag-0d3585ed-af30-448a-9422-cfba613a7fa0",
+          "label": "ExecuteScript",
+          "background": "#FF961E",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-84029ed0-d410-41be-9eaa-4e4ee08f3b83",
+          "label": "TrackEvent",
+          "background": "#61D36F",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-e33b1c21-5781-4ef5-ac8f-94b945134085",
+          "label": "SendMessage",
+          "background": "#EE82EE",
+          "canChangeBackground": false
+        },
+        {
+          "id": "blip-tag-0008c0b3-cf96-4e68-b460-88ffea067ccf",
+          "label": "UserInput",
+          "background": "#000000",
+          "canChangeBackground": false
+        }
+      ],
+      "id": "112920dc-4f7e-447c-95e9-e9dd0474ff2f",
+      "root": false,
+      "$title": "Deseja avaliar?",
+      "$position": {
+        "top": "1994px",
+        "left": "793px"
+      },
+      "$invalidContentActions": false,
+      "$invalidOutputs": false,
+      "$invalidCustomActions": false,
+      "$invalid": false,
+      "isAiGenerated": false
+    }
+  },
+  "method": "get",
+  "status": "success",
+  "id": "{{$guid}}",
+  "from": "postmaster@resources.msging.net/#msging-application-resources-58d5b5f89f-gx5lb",
+  "to": "unipachelpdesk@msging.net/!msging-server-v5z56-uxgukevz",
+  "metadata": {
+    "traceparent": "00-5ab6a28655ee3806e42dcb5da12e5248-a6556b858d3ecb27-01",
+    "#command.uri": "lime://unipachelpdesk@msging.net/buckets/blip_portal:builder_working_flow"
+  }
+}
